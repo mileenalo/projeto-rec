@@ -1,14 +1,13 @@
 import mysql.connector
-#from mysql.connector import errorcode
-try:
-	db_connection = mysql.connector.connect(host='127.0.0.1', user='root', password='', database='db_quiz')
-	print("Database connection made!")
-except mysql.connector.Error as error:
-	if error.errno == errorcode.ER_BAD_DB_ERROR:
-		print("Database doesn't exist")
-	elif error.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-		print("User name or password is wrong")
-	else:
-		print(error)
-else:
-	db_connection.close()
+con = mysql.connector.connect(host = '127.0.0.1', database = 'db_quiz', user = 'root', password = '')
+if con.is_connected():
+    db_info = con.get_server_info()
+    print("Conectado ao servidor MySQL versão ",db_info)
+    cursor = con.cursor()
+    cursor.execute("select database();")
+    linha = cursor.fetchone()
+    print("Conectado ao banco de dados ",linha)
+if con.is_connected():
+    cursor.close()
+    con.close()
+    print("Conexão ao MySQL foi encerrada")
