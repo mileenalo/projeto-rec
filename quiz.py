@@ -2,7 +2,7 @@
 #Importar biblioteca tkinter para visualização gráfica
 from tkinter import *
 
-from tkinter import tkinter as tk 
+from connect import * 
 #Importar caixa de mensagem como mb
 from tkinter import messagebox as mb
  
@@ -45,7 +45,7 @@ class Quiz:
         #Calcula a porcentagem de acertos
         score = int(self.correct / self.data_size * 100)
         result = f"Score: {score}%"
-         
+        insert_ranking(self.name, score)
         #Mostra o resultado
         mb.showinfo("Resultado", f"{result}\n{correct}\n{wrong}")
  
