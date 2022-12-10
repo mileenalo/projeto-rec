@@ -56,7 +56,7 @@ class Quiz:
          
         #Calculo de acertos e erros
         wrong_count = self.data_size - self.correct
-        correct = f"Acertos: {self.correct} {self.name}"
+        correct = f"Acertos: {self.correct}"
         wrong = f"Erros: {wrong_count}"
          
         #Calcula a porcentagem de acertos
